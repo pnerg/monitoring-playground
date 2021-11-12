@@ -1,0 +1,21 @@
+version: '3.8'
+volumes:
+  grafana_data: { }
+
+services:
+  grafana:
+    image: grafana/grafana:8.2.3
+    container_name: grafana
+    volumes:
+      - ./grafana:/etc/grafana/provisioning
+      - grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=secret
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    labels:
+      org.label-schema.group: "monitoring"
