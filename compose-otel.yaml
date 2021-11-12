@@ -1,0 +1,13 @@
+otel-collector:
+    image: otel/opentelemetry-collector
+    container_name: otel-collector
+    volumes:
+      - ./otel-collector:/tmp
+    command:
+      - '--config=/tmp/otel-collector.yaml'
+      #- '--name otelcol otel/opentelemetry-collector'
+    restart: unless-stopped
+    ports:
+      - "55690:55690"
+    labels:
+      org.label-schema.group: "monitoring"
