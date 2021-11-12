@@ -5,7 +5,6 @@ otel-collector:
       - ./otel-collector:/tmp
     command:
       - '--config=/tmp/otel-collector.yaml'
-      #- '--name otelcol otel/opentelemetry-collector'
     restart: unless-stopped
     ports:
       - "55690:55690"
