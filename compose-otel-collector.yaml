@@ -1,5 +1,8 @@
-otel-collector:
-    image: otel/opentelemetry-collector
+version: '3.8'
+
+services:
+  otel-collector:
+    image: otel/opentelemetry-collector:0.37.1
     container_name: otel-collector
     volumes:
       - ./otel-collector:/tmp

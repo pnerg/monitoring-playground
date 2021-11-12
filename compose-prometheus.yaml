@@ -1,9 +1,11 @@
+version: '3.8'
+
 volumes:
   prometheus_data: { }
 
 services:
   prometheus:
-    image: prom/prometheus
+    image: prom/prometheus:v2.31.1
     container_name: prometheus
     volumes:
       - ./prometheus:/etc/prometheus
