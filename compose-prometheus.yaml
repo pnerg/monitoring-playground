@@ -20,7 +20,5 @@ services:
     restart: unless-stopped
     ports:
       - "9090:9090"
-    #networks:
-    #  - monitor-net
     labels:
       org.label-schema.group: "monitoring"
