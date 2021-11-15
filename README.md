@@ -25,6 +25,9 @@ In this setup Grafana has been pre-configured ([datasource.yaml](grafana/datasou
 This allows you to play around creating dashboards on metrics scraped by Prometheus.   
 You can even export dashboards from the UI to json files and store them under _./grafana/dashboards/_ this way the dashboards will be loaded during startup.
 
+The user/password (_admin_/_secret_) to the UI is configured in the [compose-grafana.yaml](compose-grafana.yaml) file.  
+
+
 ## Open Telemetry (OTEL) Collector
 Acts a collector/gateway for Open Telemetry data.   
 In this setup it has only be configured ([otel-collector.yaml](otel-collector/otel-collector.yaml)) to receive trace data (not metric nor logging).   
