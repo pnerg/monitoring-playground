@@ -19,16 +19,17 @@ The script `compose-all.sh` incorporates all compose files
 ```
 
 ## Grafana
-Grafana is a web based tool for generating dashboards/graphs.  
+Grafana is a web based tool for visualising dashboards/graphs on data it fetches from datasources.  
 In this setup Grafana has been pre-configured ([datasource.yaml](grafana/datasources/datasource.yaml)) to use the dockerised Promethues as a datasource for fetching metric data.  
 
 This allows you to play around creating dashboards on metrics scraped by Prometheus.   
-You can even export dashboards to json and store them under _./grafana/dashboards/_ this way the dashboards will be loaded during startup.
+You can even export dashboards from the UI to json files and store them under _./grafana/dashboards/_ this way the dashboards will be loaded during startup.
 
 ## Open Telemetry (OTEL) Collector
 Acts a collector/gateway for Open Telemetry data.   
 In this setup it has only be configured ([otel-collector.yaml](otel-collector/otel-collector.yaml)) to receive trace data (not metric nor logging).   
-Traces sent to this service will be logged allowing to the console running the docker compose.  
+Traces sent to this service will be logged to the console running the docker compose.  
+The service listens to port `55690` on the local host, this is the port to send traces to.
 
 Example of trace log:
 ```
@@ -84,7 +85,7 @@ Attributes:
 ```
 
 ## Prometheus
-Prometheus is a service for scraping metric data, storing it in a time series database.   
+Prometheus is a service for scraping (over HTTP) metric data, storing it in a time series database.   
 One can query this data using either a HTTP API or using the UI.   
 Applications exposing metric data do so over HTTP (usually :9095/metrics).  
    
@@ -102,8 +103,9 @@ You may need to change the host to reflect the actual IP of your local machine.
 ```
 Refer to the [scrape configuration docs](https://prometheus.io/docs/prometheus/latest/configuration/configuration/) for further details.
 
-
 ## Zipkin
+Zipkin has a UI (see link below) allowing you to find traces exported by your app.   
+The service listens to port `9411` on the local host, this is the port to send traces to.
 
 ## Local links
 When starting the services these can be accessed via the following adresses:
